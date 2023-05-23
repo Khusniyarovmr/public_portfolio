@@ -1,0 +1,182 @@
+{
+  "0": {
+    "type": "create_dir",
+    "name": "create data dir",
+    "parameters": {
+      "direction": "data",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "1": {
+    "type": "create_file",
+    "name": "create test.txt file",
+    "parameters": {
+      "direction": "data",
+      "filename": "test.txt",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": [0]
+  },
+  "2": {
+    "type": "write_file",
+    "name": "write text to test.txt",
+    "parameters": {
+      "direction": "data",
+      "filename": "test.txt",
+      "text": "Тестовая запись в файл тест.тхт",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": [1]
+  },
+  "3": {
+    "type": "create_file",
+    "name": "create file testfile.jpeg",
+    "parameters": {
+      "direction": "",
+      "filename": "testfile.jpeg",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "4": {
+    "type": "delete_file",
+    "name": "delete file testfile.jpeg",
+    "parameters": {
+      "direction": "",
+      "filename": "testfile.jpeg",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": [3]
+  },
+  "5": {
+    "type": "delete_dir",
+    "name": "delete folder data",
+    "parameters": {
+      "direction": "data",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "6": {
+    "type": "read_file",
+    "name": "read file test",
+    "parameters": {
+      "direction": "data",
+      "filename": "test.txt",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "10": {
+    "type": "get_request",
+    "name": "get request from google.com",
+    "parameters": {
+      "direction": "",
+      "filename": "",
+      "text": "",
+      "URL": "google.com"
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "11": {
+    "type": "analyze_response",
+    "name": "read response",
+    "parameters": {
+      "direction": "",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": [10]
+  },
+  "12": {
+    "type": "create_dir",
+    "name": "create another test dir",
+    "parameters": {
+      "direction": "data_3",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "13": {
+    "type": "delete_dir",
+    "name": "delete another test dir",
+    "parameters": {
+      "direction": "data_3",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  },
+  "14": {
+    "type": "delete_file",
+    "name": "delete response.txt",
+    "parameters": {
+      "direction": "",
+      "filename": "response.txt",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": "",
+    "max_working_time": -1,
+    "tries": 3,
+    "repeat": false,
+    "dependencies": []
+  }
+}

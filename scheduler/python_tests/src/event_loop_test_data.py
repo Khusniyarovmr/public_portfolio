@@ -1,0 +1,1 @@
+JOB_DICT = {'0': {'type': 'create_dir', 'name': 'create data dir', 'parameters': {'direction': 'data', 'filename': '', 'text': '', 'URL': ''}, 'start_at': '', 'max_working_time': -1, 'tries': 3, 'repeat': False, 'dependencies': []}}

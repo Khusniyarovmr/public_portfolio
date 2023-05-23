@@ -1,0 +1,47 @@
+{
+  "7": {
+    "type": "stop",
+    "name": "",
+    "parameters": {
+      "direction": "",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": -1,
+    "max_working_time": -1,
+    "tries": -1,
+    "repeat": false,
+    "dependencies": []
+  },
+  "8": {
+    "type": "restart",
+    "name": "",
+    "parameters": {
+      "direction": "",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": -1,
+    "max_working_time": -1,
+    "tries": -1,
+    "repeat": false,
+    "dependencies": []
+  },
+  "9": {
+    "type": "start",
+    "name": "",
+    "parameters": {
+      "direction": "",
+      "filename": "",
+      "text": "",
+      "URL": ""
+    },
+    "start_at": -1,
+    "max_working_time": -1,
+    "tries": -1,
+    "repeat": false,
+    "dependencies": []
+  }
+}

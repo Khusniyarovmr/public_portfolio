@@ -1,0 +1,53 @@
+{
+"price": "1.351",
+"action": "sell",
+"type": "short",
+"lot": "-10"
+}
+{
+"price": "1.3498",
+"action": "buy",
+"type": "flat",
+"lot": "0"
+}
+{
+"price": "1.348",
+"action": "buy",
+"type": "long",
+"lot": "10"
+}
+{
+"price": "1.3481",
+"action": "sell",
+"type": "flat",
+"lot": "0"
+}
+{
+"price": "1.3553000000000002",
+"action": "sell",
+"type": "short",
+"lot": "-10"
+}
+{
+"price": "1.3533000000000002",
+"action": "buy",
+"type": "flat",
+"lot": "0"
+}
+{
+"symbol": "MATICUSDTPERP"
+"price": "1.345",
+"action": "buy",
+"type": "long",
+"lot": "10"
+}
+
+
+
+
+
+
+
+
+
+
