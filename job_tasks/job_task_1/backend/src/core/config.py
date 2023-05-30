@@ -27,7 +27,7 @@ class AppSettings(BaseSettings):
         port=PORT,
         database=DATABASE,
     )
-
+    print(posgtres_url)
     app_title: str = PROJECT_NAME
     database_dsn: URL = posgtres_url
 

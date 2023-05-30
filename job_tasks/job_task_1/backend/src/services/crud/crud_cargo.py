@@ -1,19 +1,19 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.models.cargo import Cargo as CargoModel
-from src.models.location import Location
-from src.models.truck import Truck
-from src.schemas.cargo import (
+from models.cargo import Cargo as CargoModel
+from models.location import Location
+from models.truck import Truck
+from schemas.cargo import (
     CargoCreate,
     CargoUpdate,
     CargoModelWithAllTrucks,
     ListOfTrucks,
     CargoWithTruckCountBase
 )
-from src.services.crud.base import RepositoryDB
-from src.services.get_distance_between_locations import get_distance
-from src.services.logger.logger import logger
+from services.crud.base import RepositoryDB
+from services.get_distance_between_locations import get_distance
+from services.logger.logger import logger
 
 
 class CRUDCargo(RepositoryDB[CargoModel, CargoCreate, CargoUpdate]):

@@ -1,15 +1,15 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.db import get_session
-from src.schemas.cargo import (
+from db.db import get_session
+from schemas.cargo import (
     CargoCreate,
     CargoUpdate,
     CargoModelWithAllTrucks,
 )
-from src.services.crud.crud_cargo import cargo_crud
-from src.services.crud.crud_locations import location_crud
-from src.services.logger.logger import logger
+from services.crud.crud_cargo import cargo_crud
+from services.crud.crud_locations import location_crud
+from services.logger.logger import logger
 
 cargo_router = APIRouter()
 

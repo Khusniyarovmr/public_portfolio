@@ -22,5 +22,7 @@ services:
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=postgres
             - POSTGRES_DB=search_nt_db
-        ports:
-            - "5433:5432"
+        expose:
+            - 5432
+#        ports:
+#            - "5433:5432"

@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-from src.core.config import app_settings
+from core.config import app_settings
 
 
 # Создаём базовый класс для будущих моделей

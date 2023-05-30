@@ -2,11 +2,11 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse, PlainTextResponse
 
-from src.api.v1 import base
+from api.v1 import base
 from core.config import app_settings
 from services.logger.logger import logger
-from src.db.db import init_db
-from src.models import models  # noqa
+from db.db import init_db
+from models import models  # noqa
 
 # Инициализация объекта приложения
 app = FastAPI(

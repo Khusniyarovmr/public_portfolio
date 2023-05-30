@@ -2,8 +2,8 @@ import asyncio
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.db import async_session
-from src.services.crud.crud_truck import truck_crud
+from db.db import async_session
+from services.crud.crud_truck import truck_crud
 
 
 class BackgroundRunner:

@@ -4,9 +4,9 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql.expression import func
 
-from src.models.location import Location as LocationModel
-from src.models.truck import Truck as TruckModel
-from src.schemas.truck import TruckCreate, TruckUpdate
+from models.location import Location as LocationModel
+from models.truck import Truck as TruckModel
+from schemas.truck import TruckCreate, TruckUpdate
 from .base import RepositoryDB
 
 

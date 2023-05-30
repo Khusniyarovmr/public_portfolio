@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import Integer, Column, String, ForeignKeyConstraint, DateTime
 
-from src.db.db import Base
+from db.db import Base
 
 
 class Cargo(Base):

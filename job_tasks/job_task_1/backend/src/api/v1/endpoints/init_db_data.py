@@ -3,9 +3,9 @@ import asyncio
 from fastapi import APIRouter
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.db import async_session
-from src.services.crud.crud_init_db import insert_loc_from_file, insert_trucks_on_init
-from src.services.update_truck_loc_runner import runner
+from db.db import async_session
+from services.crud.crud_init_db import insert_loc_from_file, insert_trucks_on_init
+from services.update_truck_loc_runner import runner
 
 init_db_data_router = APIRouter()
 

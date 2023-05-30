@@ -9,8 +9,8 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql.expression import func
 
-from src.models.location import Location as LocationModel
-from src.models.truck import Truck as TruckModel
+from models.location import Location as LocationModel
+from models.truck import Truck as TruckModel
 
 
 class Locations(NamedTuple):

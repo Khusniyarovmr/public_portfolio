@@ -1,9 +1,9 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.models.location import Location as LocationModel
-from src.schemas.location import LocationCreate, LocationUpdate
-from src.services.crud.base import RepositoryDB
+from models.location import Location as LocationModel
+from schemas.location import LocationCreate, LocationUpdate
+from services.crud.base import RepositoryDB
 
 
 class CRUDLocations(RepositoryDB[LocationModel, LocationCreate, LocationUpdate]):

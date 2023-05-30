@@ -1,20 +1,20 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.db import get_session
-from src.schemas.truck import (
+from db.db import get_session
+from schemas.truck import (
     TruckModel,
     TruckUpdateById
 )
-from src.services.crud.crud_locations import location_crud
-from src.services.crud.crud_truck import truck_crud
+from services.crud.crud_locations import location_crud
+from services.crud.crud_truck import truck_crud
 
 truck_router = APIRouter()
 
 
 # Редактирование машины по ID (локация (определяется по введенному zip-коду));
 @truck_router.put("/truck", tags=["truck"])
-async def update_cargo_by_id(
+async def update_truck_by_id(
         *,
         db: AsyncSession = Depends(get_session),
         entity_in: TruckUpdateById,

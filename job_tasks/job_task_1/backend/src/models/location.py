@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, Column, String
 
-from src.db.db import Base
+from db.db import Base
 
 
 class Location(Base):
