@@ -10,7 +10,7 @@ class BackgroundRunner:
     def __init__(self, db):
         self.db: AsyncSession = db
 
-    async def run_main(self):
+    async def run_main(self) -> None:
         while True:
             await asyncio.sleep(180)
             await truck_crud.update_truck_location(self.db)

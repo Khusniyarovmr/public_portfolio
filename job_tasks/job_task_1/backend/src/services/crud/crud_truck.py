@@ -26,6 +26,3 @@ class CRUDTruck(RepositoryDB[TruckModel, TruckCreate, TruckUpdate]):
 
 
 truck_crud = CRUDTruck(TruckModel)
-
-# if __name__ == '__main__':
-#     asyncio.run(update_truck_location(async_session))

@@ -74,5 +74,5 @@ def _get_rnd_car_number() -> str:
     return str(rnd_car_num) + rnd_literal
 
 
-def _get_random(a, b) -> int:
+def _get_random(a: int, b: int) -> int:
     return random.randint(a, b)

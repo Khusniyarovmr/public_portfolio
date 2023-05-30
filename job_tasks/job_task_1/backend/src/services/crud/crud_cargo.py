@@ -17,7 +17,8 @@ from services.logger.logger import logger
 
 
 class CRUDCargo(RepositoryDB[CargoModel, CargoCreate, CargoUpdate]):
-    # - Получение информации о конкретном грузе по ID (локации pick-up, delivery, вес, описание, список номеров ВСЕХ машин с расстоянием до выбранного груза);
+    # - Получение информации о конкретном грузе по ID (локации pick-up, delivery, вес,
+    # описание, список номеров ВСЕХ машин с расстоянием до выбранного груза);
     async def get_cargo_with_trucks(self,
                                     db: AsyncSession,
                                     *,
@@ -48,17 +49,17 @@ class CRUDCargo(RepositoryDB[CargoModel, CargoCreate, CargoUpdate]):
 
     # - Получение списка грузов (локации pick-up, delivery, количество ближайших машин до груза ( =< 450 миль));
     @staticmethod
-    async def get_all_cargo_with_distance(db: AsyncSession):
+    async def get_all_cargo_with_distance(db: AsyncSession) -> dict[int, CargoWithTruckCountBase]:
         stmt = select(Truck.id, Location.latitude, Location.longitude)
-        stmt = stmt.join(Location, Location.id == Truck.location_id)  # noqa
+        stmt = stmt.join(Location, Location.id == Truck.location_id)
         truck_list_cursor = await db.execute(stmt)
-        truck_list = truck_list_cursor.fetchall()  # list[tuple[truck.id, truck.lat, truck.long]]
+        truck_list = truck_list_cursor.fetchall()
 
         stmt = select(CargoModel.id, CargoModel.pick_up_location, CargoModel.delivery_location, Location.latitude,
                       Location.longitude)
-        stmt = stmt.join(Location, Location.zip_code == CargoModel.pick_up_location)  # noqa
+        stmt = stmt.join(Location, Location.zip_code == CargoModel.pick_up_location)
         cargo_list_cursor = await db.execute(stmt)
-        cargo_list = cargo_list_cursor.fetchall()  # list[tuple[cargo.id, cargo.lat, cargo.long]]
+        cargo_list = cargo_list_cursor.fetchall()
 
         cargo_dist_info = {}
         for cargo, pick_up, delivery, cargo_lat, cargo_long in cargo_list:
@@ -81,8 +82,3 @@ class CRUDCargo(RepositoryDB[CargoModel, CargoCreate, CargoUpdate]):
 
 
 cargo_crud = CRUDCargo(CargoModel)
-
-# if __name__=='__main__':
-#     import asyncio
-#     from src.db.db import async_session
-#     asyncio.run(cargo_crud.get_all_cargo_with_distance(db=async_session))

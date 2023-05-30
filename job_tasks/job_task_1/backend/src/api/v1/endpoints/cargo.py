@@ -20,7 +20,7 @@ async def delete_cargo_by_id(
         *,
         db: AsyncSession = Depends(get_session),
         entity_in: int,
-):
+) -> dict:
     """
        delete cargo by id.
     """
