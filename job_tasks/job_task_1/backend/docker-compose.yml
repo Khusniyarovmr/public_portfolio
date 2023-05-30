@@ -1,6 +1,7 @@
 version: "3.9"
 services:
     backend:
+        container_name: fastapi
         build: .
         environment:
             - DATABASE=search_nt_db
@@ -9,8 +10,7 @@ services:
             - DRIVER=postgresql+asyncpg
             - HOST=postgresdb
             - PORT=5432
-        command:
-            -   uvicorn src.main:app --host 0.0.0.0 --port 8000
+        command: ['python', 'src/main.py']
         depends_on:
             - postgresdb
         ports:

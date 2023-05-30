@@ -61,7 +61,7 @@ async def insert_trucks_on_init(db: AsyncSession) -> None:
             car_number = _get_rnd_car_number()
             stmt = insert(TruckModel).values(
                 truck_number=car_number,
-                current_location=_get_random(1, 1000),
+                location_id=_get_random(1, 1000),
                 capacity=_get_random(1, max_loc_count),
                 is_active=1,
             )
