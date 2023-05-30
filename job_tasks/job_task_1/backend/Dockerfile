@@ -6,4 +6,6 @@ COPY ./requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY ./src /app/src
 COPY ./uszips.csv ./uszips.csv
+COPY ./wait_for_it.sh ./wait_for_it.sh
+RUN chmod +x ./wait_for_it.sh
 #CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
