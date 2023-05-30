@@ -39,5 +39,5 @@ if __name__ == '__main__':
         'main:app',
         host=app_settings.PROJECT_HOST,
         port=app_settings.PROJECT_PORT,
-        # reload=True
+        reload=True
     )
