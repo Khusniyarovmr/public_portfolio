@@ -1,0 +1,9 @@
+asyncpg==0.27.0
+fastapi==0.89.1
+loguru==0.6.0
+python-dotenv==0.21.1
+SQLAlchemy==1.4.46
+SQLAlchemy-Utils==0.39.0
+uvicorn==0.20.0
+geopy==2.3.0
+orjson==3.8.14
