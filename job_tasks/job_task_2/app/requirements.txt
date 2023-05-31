@@ -1,0 +1,7 @@
+fastapi==0.95.2
+redis==4.5.5
+loguru==0.7.0
+uvicorn==0.22.0
+python-dotenv==1.0.0
+orjson==3.8.14
+
