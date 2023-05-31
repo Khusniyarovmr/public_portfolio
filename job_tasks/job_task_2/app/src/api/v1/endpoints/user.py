@@ -30,7 +30,7 @@ async def update_address_by_phone(
     return update_result
 
 
-@user_router.get("/check_data", tags=["user"], response_model=UserModel | int)
+@user_router.get("/check_data", tags=["user"], response_model=UserModel | dict)
 async def get_address_by_phone(
         *,
         entity_in: str

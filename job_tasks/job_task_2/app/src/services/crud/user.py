@@ -17,13 +17,14 @@ class CRUDUser:
         return HTTPStatus.OK
 
     @staticmethod
-    async def get_address_by_phone(phone: str) -> UserModel | int:
+    async def get_address_by_phone(phone: str) -> UserModel | dict:
         user_info = await aio_redis.hget('user', phone)
         if user_info:
             user_obj = {'phone_number': phone, 'address': user_info}
             return UserModel.parse_obj(user_obj)
         else:
-            return HTTPStatus.EXPECTATION_FAILED
+            return {'status': HTTPStatus.EXPECTATION_FAILED,
+                    'description': 'Такого номера телефона нет в базе'}
 
 
 crud_user = CRUDUser()
