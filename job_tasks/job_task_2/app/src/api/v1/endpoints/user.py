@@ -14,7 +14,7 @@ async def create_user_by_phone(
     """
     Create new user.
     """
-    create_result = await crud_user.create_user_by_phone(obj_in=entity_in)
+    create_result = await crud_user.upinsert_address_by_phone(obj_in=entity_in)
     return create_result
 
 
@@ -26,7 +26,7 @@ async def update_address_by_phone(
     """
        Update address by phone number.
     """
-    update_result = await crud_user.update_address_by_phone(obj_in=entity_in)
+    update_result = await crud_user.upinsert_address_by_phone(obj_in=entity_in)
     return update_result
 
 

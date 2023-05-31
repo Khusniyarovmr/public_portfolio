@@ -7,12 +7,7 @@ from schemas.user import UserModel
 class CRUDUser:
 
     @staticmethod
-    async def create_user_by_phone(obj_in: UserModel) -> int:
-        await aio_redis.hset('user', obj_in.phone_number, obj_in.address)
-        return HTTPStatus.OK
-
-    @staticmethod
-    async def update_address_by_phone(obj_in: UserModel) -> int:
+    async def upinsert_address_by_phone(obj_in: UserModel) -> int:
         await aio_redis.hset('user', obj_in.phone_number, obj_in.address)
         return HTTPStatus.OK
 
