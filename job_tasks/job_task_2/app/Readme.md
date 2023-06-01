@@ -26,6 +26,36 @@ docker-compose up
 
 Вторая часть.
 
+Код для заполнения тестовых данных.
+```sql
+create table test_1 (fullname text, num integer);
+create table test_2 (partname text, num integer);
+
+DO $$
+DECLARE
+cnt int;
+BEGIN
+for cnt in 1..700000
+	LOOP
+	insert into test_2
+	select 'somefield'||cnt, cnt;
+	END LOOP;
+END$$;
+
+DO $$
+DECLARE
+cnt int;
+BEGIN
+for cnt in 1..500000
+	LOOP
+	insert into test_1
+	select 'somefield'||cnt||'.wav', null;
+	END LOOP;
+END$$;
+```
+
+
+
 Этот код отрабатывает за 2,5 секунды.
 
 ```sql
