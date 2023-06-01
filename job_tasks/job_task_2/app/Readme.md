@@ -13,7 +13,16 @@
 3. get_address_by_phone - получение информации из БД по номеру телефона.
     При получении сигнала запускается crud "CRUDUser.get_address_by_phone"
     Возвращается либо объект pydantic модели "UserModel" либо dict
-    
+
+Запуск приложения:
+
+```bash
+git clone https://github.com/Khusniyarovmr/public_portfolio.git
+cd public_portfolio/job_tasks/job_tasks_2/app
+docker-compose build
+docker-compose up
+```
+
 
 Вторая часть.
 
