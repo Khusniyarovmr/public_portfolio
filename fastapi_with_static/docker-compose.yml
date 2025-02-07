@@ -7,7 +7,7 @@ services:
     restart: always
     volumes:
       - "./:/src/"
-    command: [ "python", "/app/main.py" ]
+    command: ["sh", "-c", "python /app/wait_for_postgres.py && python /app/main.py"]
     environment:
       - TZ=UTC
     depends_on:
@@ -30,7 +30,6 @@ services:
       - "5432:5432"
     volumes:
       - ./migrations:/docker-entrypoint-initdb.d
-      - ./database_pg:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_NAME}" ]
       interval: 10s
