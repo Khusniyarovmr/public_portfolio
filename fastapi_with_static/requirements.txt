@@ -1,0 +1,10 @@
+fastapi==0.115.8
+asyncpg==0.29.0
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+uvicorn==0.30.6
+alembic==1.13.3
+pytz==2024.2
+sqlalchemy-utils==0.41.2
+aiofile==3.9.0

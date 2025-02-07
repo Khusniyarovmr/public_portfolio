@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Data to App</title>
+
+    <!-- Add custom styles -->
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9; /* Light background */
+            color: #333; /* Darker text default */
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        /* Centering the form and adding some spacing */
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #5dbb63;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4aa352;
+        }
+
+        /* Styling the output area */
+        .output-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+
+        #output {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Style for normal API Results */
+        #output p {
+            margin: 0;
+            padding: 10px;
+            border-radius: 5px;
+            background: #eef6fc; /* Light blue background */
+            color: #035386; /* Dark blue text */
+            font-size: 14px;
+        }
+
+        /* Style for error/warning messages */
+        #output p.error-message {
+            background: #ffefef; /* Light red background */
+            color: #881919; /* Red error text */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Send Data to App</h1>
+    <div class="form-container">
+        <form onsubmit="event.preventDefault(); sendData();">
+            <label for="userInput">Enter Text:</label>
+            <input type="text" id="userInput" name="userInput" required placeholder="Enter Address">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <h2>Response:</h2>
+    <div class="output-container">
+        <div id="output">
+            <!-- Dynamic output will go here -->
+        </div>
+    </div>
+
+    <script>
+        async function sendData() {
+            const userInput = document.getElementById('userInput').value;
+
+            try {
+                const response = await fetch(`http://localhost:8000/api/report?address=${encodeURIComponent(userInput)}`);
+                const { report_data } = await response.json(); // Extract "report_data" from API response
+
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = ""; // Clear previous results
+
+                // Loop through report_data and handle different cases
+                report_data.forEach(tuple => {
+                    const item = document.createElement('p');
+
+                    if (tuple.length === 1) {
+                        // Handle a single-value tuple (e.g., "Too much data to display"):
+                        item.textContent = tuple[0]; // Display the message directly
+                        item.classList.add("error-message"); // Add error style
+                    } else if (tuple.length >= 2) {
+                        // Handle two-element tuples as usual:
+                        item.textContent = `${tuple[0]}, ${tuple[1]}`;
+                    } else {
+                        // Handle unexpected empty tuples:
+                        item.textContent = "Invalid data format";
+                        item.classList.add("error-message"); // Add error style
+                    }
+
+                    outputDiv.appendChild(item);
+                });
+            } catch (error) {
+                console.error("An error occurred:", error);
+                alert("Failed to fetch data from the app.");
+            }
+        }
+    </script>
+</body>
+</html>

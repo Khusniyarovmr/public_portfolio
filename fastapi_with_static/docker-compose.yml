@@ -1,0 +1,52 @@
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - "./:/src/"
+    command: [ "python", "/app/main.py" ]
+    environment:
+      - TZ=UTC
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+    networks:
+      - project
+
+  postgres:
+    container_name: postgres-db
+    image: postgres:15.3
+    environment:
+      POSTGRES_DB: ${POSTGRES_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      PGDATA: /var/lib/postgresql/data
+      TZ: UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migrations:/docker-entrypoint-initdb.d
+      - ./database_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    networks:
+      - project
+
+
+networks:
+  project:
+    driver: "bridge"
